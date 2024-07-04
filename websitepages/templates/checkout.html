@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h2>Checkout</h2>
+        <div id="checkoutDetails"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        var cart = {};
+        
+        if (localStorage.getItem('cart') != null) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+
+        var checkoutDetails = document.getElementById('checkoutDetails');
+        var totalAmount = 0;
+
+        for (var x in cart) {
+            var itemTotal = cart[x].itemCount * cart[x].itemPrice;
+            totalAmount += itemTotal;
+
+            checkoutDetails.innerHTML += "Item ID: " + x + ", Name: " + cart[x].itemName + ", Qty: " + cart[x].itemCount +
+                ", Price: $" + cart[x].itemPrice.toFixed(2) +
+                ", Total: $" + itemTotal.toFixed(2) + "</br>";
+        }
+
+        checkoutDetails.innerHTML += "<hr><strong>Total Amount: $" + totalAmount.toFixed(2) + "</strong>";
+    </script>
+</body>
+</html>

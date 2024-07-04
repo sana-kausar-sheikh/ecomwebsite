@@ -1,0 +1,25 @@
+.card-text{
+    color: blueviolet;
+    font-weight: 500;
+}
+
+.card-title{
+    font-weight: 900;
+}
+
+.card{
+    height: 480px;;
+}
+
+.row{
+    height: 200px;
+}
+
+.card-1{
+    height: 50px;
+}
+
+.card-footer{
+    position: relative;
+    margin-top: 100%;
+}
